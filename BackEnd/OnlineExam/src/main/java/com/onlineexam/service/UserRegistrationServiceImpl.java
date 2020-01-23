@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlineexam.dao.UserRegistrationDao;
+import com.onlineexam.functions.Functions;
 import com.onlineexam.model.User;
 
 @Service
@@ -14,11 +15,18 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 	@Override
 	public boolean addUser(User user) {
-		int result = dao.addUser(user);
-		if (result == 1)
+		int isAdded = dao.addUser(user);
+		char[] OTP;
+		if (isAdded == 1) {
+			OTP = Functions.generatePassword();
+			System.out.println(OTP);
+			// update otp in user_login
+			// send otp to mail
 			return true;
-		else
+		} else {
+			
 			return false;
+		}
 	}
 
 	public UserRegistrationDao getDao() {
