@@ -1,0 +1,47 @@
+<body><table >
+    <div class="header" >
+          <h1>ONLINE EXAM</h1>
+        
+         
+          
+      </div>
+     
+      <div class="content">
+          <h3>Dont have an Account?</h3>
+        <a routerLink="../userRegistration">Please Register Here♥</a>
+        <div class="user">
+          <tr>
+              <th>User Name : </th>
+              <td >
+              <input type="text" id="txtUN" name="txtUN"
+              pattern="[A-Za-z@]{4,8}" required
+              maxlength="8" size="15" placeholder="User Name" />
+              </td>
+          </tr>
+        </div>
+        <div type="pass">
+          <tr >
+              <th>Password : </th>
+              <td>
+              <input type="password" id="txtPD" name="txtPD"
+              required
+              maxlength="8" size="15" placeholder="Password" />
+              </td>
+          </tr>
+        </div>
+           <tr>
+              <td align="right">
+              <input type="submit" value="Register" />
+              </td>
+              </tr>
+              
+           <a routerLink="/forgotPassword">Forgot Password</a>
+          <iframe name="main-content"></iframe>
+         
+      </div>
+      <div class="footer">
+         <small>Copyright 2018&copy; Larsen & Toubro Infotech</small>
+      </div>
+      </table></body>
+  
+  <router-outlet></router-outlet>
