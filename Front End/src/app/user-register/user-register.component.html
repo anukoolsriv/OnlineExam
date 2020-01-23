@@ -1,7 +1,7 @@
 <div class="tbl">
-    <form #registerForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-        {{registerForm.value | json}}
-        <br/> {{registerModel | json}}
+    <form [formGroup]="registerForm" novalidate (ngSubmit)="addStudent()">
+        <!-- {{registerForm.value | json}} -->
+        <br/> {{registerForm.value | json}}
         <table align="center">
             <tr>
                 <th colspan="2">Registration</th>
@@ -9,37 +9,37 @@
             <tr>
                 <th>First Name*:</th>
                 <td>
-                    <input [(ngModel)]="registerModel.first" type="text" id="firstName" name="firstName" maxlength="10" size="30" placeholder="First Name" autofocus/>
+                    <input formControlName="firstName" type="text" id="firstName" name="firstName" maxlength="10" size="30" placeholder="First Name" autofocus/>
                 </td>
             </tr>
             <tr>
                 <th>Last Name*:</th>
                 <td>
-                    <input [(ngModel)]="registerModel.last" type="text" id="lastName" name="lastName" maxlength="10" size="30" placeholder="Last Name" />
+                    <input formControlName="lastName" type="text" id="lastName" name="lastName" maxlength="10" size="30" placeholder="Last Name" />
                 </td>
             </tr>
             <tr>
                 <th>Email Address : </th>
                 <td>
-                    <input [(ngModel)]="registerModel.email" type="email" id="emailId" name="emailId" maxlength="40" size="30" placeholder="Email Address" />
+                    <input formControlName="email" type="email" id="emailId" name="emailId" maxlength="40" size="30" placeholder="Email Address" />
                 </td>
             </tr>
             <tr>
                 <th>Mobile Number : </th>
                 <td>
-                    <input [(ngModel)]="registerModel.mobile" type="number" id="mobileNumber" name="mobileNumber" maxlength="10" size="20" pattern="[7-9][0-9]{9}" title="Please enter mobile number properly." placeholder="Mobile Number" />
+                    <input formControlName="mobile" type="number" id="mobileNumber" name="mobileNumber" maxlength="10" size="20" pattern="[7-9][0-9]{9}" title="Please enter mobile number properly." placeholder="Mobile Number" />
                 </td>
             </tr>
             <tr>
                 <th>Date Of Birth : </th>
                 <td>
-                    <input [(ngModel)]="registerModel.dob" type="date" id="dob" name="dob" min="1970-01-01" max="2001-12-31" />
+                    <input formControlName="dateOfBirth" type="date" id="dob" name="dob" min="1970-01-01" max="2001-12-31" />
                 </td>
             </tr>
             <tr>
                 <th>Select State</th>
                 <td>
-                    <select [(ngModel)]="registerModel.state" name="state" id="state" (change)="populateCity()">
+                    <select formControlName="state" name="state" id="state" (change)="populateCity()">
                         <option value="-1">Select State</option>
                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                         <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -53,7 +53,7 @@
             <tr>
                 <th>Select City</th>
                 <td>
-                    <select [(ngModel)]="registerModel.city" id="city" name="city">
+                    <select formControlName="city" id="city" name="city">
                         <option value="-1">Select City</option>
                     </select>
                 </td>
@@ -61,7 +61,7 @@
             <tr>
                 <th>Qualification</th>
                 <td>
-                    <select [(ngModel)]="registerModel.qualification" id="qualification" name="qualification">
+                    <select formControlName="qualification" id="qualification" name="qualification">
                         <option value="10">Class 10</option>
                         <option value="12">Class 12</option>
                         <option value="BTech">BTech</option>
@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <th>Year Of Completion</th>
-                <td><input [(ngModel)]="registerModel.yearOfCompletion" type="number" id="YearOfCompletion" name="YearOfCompletion" min="1970" max="2019" pattern="[1-2][0-9]{3}" title="Please Enter Correct Year" placeholder="Year Of Completion" />
+                <td><input formControlName="yearOfCompletion" type="number" id="YearOfCompletion" name="YearOfCompletion" min="1970" max="2019" pattern="[1-2][0-9]{3}" title="Please Enter Correct Year" placeholder="Year Of Completion" />
                 </td>
             </tr>
             <tr>

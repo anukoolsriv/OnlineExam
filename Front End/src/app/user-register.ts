@@ -3,7 +3,7 @@ export class userRegister {
         public firstName: string,
         public lastName: string,
         public email: string,
-        public mobileNumber: number,
+        public mobile: number,
         public dateOfBirth: Date,
         public state: string,
         public city: string,

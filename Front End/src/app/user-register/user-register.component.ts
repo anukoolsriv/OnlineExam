@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { userRegister } from '../user-register';
 import { RegistrationService } from '../registration.service';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-register',
@@ -8,17 +9,30 @@ import { RegistrationService } from '../registration.service';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  constructor(private  registrationService : RegistrationService){}
-  
+
+  url: string = "http://localhost:9090/students";
+
+  registerForm: FormGroup;
+  constructor(private formBuilder: FormBuilder,private  registrationService : RegistrationService){}
   
   ngOnInit(): void {
-    
+    this.registerForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      mobile: [''],
+      dateOfBirth: [''] ,
+      state: [''] ,
+      city: [''] ,
+      qualification: [''] ,
+      yearOfCompletion: ['']
+    });
   }
   
-  registerModel = new userRegister("","", "",0,new Date(), "", "", "",0);
+  // registerModel = new userRegister("","", "",0,new Date(), "", "", "",0);
 
-  onSubmit() {
-    this.registrationService.register(this.registerModel)
+  addStudent() {
+    this.registrationService.register(this.registerForm.value)
     .subscribe(
       data => console.log('Success!', data),
       error => console.error('Error!', error)
@@ -46,15 +60,4 @@ export class UserRegisterComponent implements OnInit {
       }
     }
   }
-  // getYears(): void{
-  //   let year="";
-  //   let start=1970;
-  //   let end = Number(new Date().getFullYear);
-  //   let i = start;
-
-  //   while(i <= end){
-  //     year+= "<option value="+i+">" + i + "</option>";
-  //   }
-  //   document.getElementById("yearofcompletion").innerHTML = year;
-  // }
 }
