@@ -8,7 +8,7 @@ import { userRegister } from './user-register';
 export class RegistrationService {
 
 
-  _url='https://localhost:9090/RestDemo/app/a1/hello';
+  _url='http://localhost:9090/registerUser/';
   constructor(private _http: HttpClient) { }
 
   register(user : userRegister){
