@@ -14,6 +14,6 @@ export class RegistrationService {
   //register user
   register(user : userRegister){
     // console.log(this._http.get<any>(this._url));
-    return this.http.post<any>(this.url, user); 
+    return this.http.post<any>(this.url, user,{responseType: 'json'}); 
   }
 }
