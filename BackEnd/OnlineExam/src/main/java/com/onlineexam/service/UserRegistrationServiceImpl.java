@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.onlineexam.dao.UserRegistrationDao;
 import com.onlineexam.functions.Functions;
 import com.onlineexam.model.User;
+import com.onlineexam.model.UserLogin;
 
 @Service
 public class UserRegistrationServiceImpl implements UserRegistrationService {
@@ -14,20 +15,52 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	private UserRegistrationDao dao;
 
 	@Override
-	public boolean addUser(User user) {
-		int isAdded = dao.addUser(user);
-		char[] OTP;
-		if (isAdded == 1) {
-			OTP = Functions.generatePassword();
-			System.out.println(OTP);
-			// update otp in user_login
-			// send otp to mail
-			return true;
-		} else {
-			
-			return false;
+	public boolean addUser(User user) {		
+		String OTP = Functions.generatePassword();
+		
+		System.out.println("OTP " + OTP);
+		// set userLogin credentials
+//		UserLogin userLogin = new UserLogin(user.getUserId(), user.getEmail(), OTP);
+		
+//		user.setUserLogin(userLogin);
+//		user.getUserLogin().setEmail(user.getEmail());
+		
+		System.out.println(user);
+		
+		User u1 = dao.addUser(user);
+//		System.out.println("Added " + isAdded);
+		System.out.println("User Id " + u1.getUserId());
+		boolean finalStatus = false;
+		boolean mailSent = false;
+		if (u1 != null) {
+			UserLogin userLogin = new UserLogin(u1.getUserId(), u1.getEmail(), OTP);
+			int insertUserLogin = dao.addUserLogin(userLogin);
+			mailSent = Functions.sendEmail(user.getEmail(), OTP);
+			if (mailSent) {
+				finalStatus = true;
+			}
 		}
+		return finalStatus;
 	}
+//	
+//	private boolean insertuserLogin(char[] OTP, String email) {
+//		int insert = dao.insertPassword(OTP, email);
+//		
+//		if(insert == 1){
+//			return true;
+//		}
+//		return false;
+//	}
+
+	/*public boolean updatePassword(char[] OTP, String email){
+		int updated = dao.updatePassword(OTP, email);
+		
+		if(updated == 1){
+			return true;
+		}
+		return false;
+		
+	}*/
 
 	public UserRegistrationDao getDao() {
 		return dao;
@@ -35,6 +68,12 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 	public void setDao(UserRegistrationDao dao) {
 		this.dao = dao;
+	}
+
+	@Override
+	public boolean updatePassword(char[] OTP, String email) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

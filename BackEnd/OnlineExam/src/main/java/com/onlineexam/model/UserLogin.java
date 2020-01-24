@@ -10,10 +10,10 @@ import javax.persistence.Table;
 @Table(name = "user_login")
 
 public class UserLogin {
+	
 	@Id
 	@Column(name = "user_id")
 	private int userId;
-
 
 	@Column(name = "email")
 	private String email;
@@ -30,6 +30,13 @@ public class UserLogin {
 
 	public UserLogin() {
 		super();
+	}
+
+	public UserLogin(int userId, String email, String password) {
+		super();
+		this.userId = userId;
+		this.email = email;
+		this.password = password;
 	}
 
 	public UserLogin(int userId, String email, String password, String otp) {

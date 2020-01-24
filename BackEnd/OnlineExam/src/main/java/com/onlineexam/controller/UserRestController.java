@@ -15,7 +15,7 @@ import com.onlineexam.model.User;
 import com.onlineexam.service.UserRegistrationService;
 
 @RestController
-@RequestMapping(path = "registerUser")
+@RequestMapping(path = "user")
 @CrossOrigin
 public class UserRestController {
 	
@@ -25,21 +25,29 @@ public class UserRestController {
 	
 	//http://localhost:9090/registerUser/
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> addUser(@RequestBody User user){
-		ResponseEntity<String> response;
+	public User addUser(@RequestBody User user){
+		String msg;
 		boolean result=service.addUser(user);
 		if(result){
-			response=new ResponseEntity<String>("User Added",HttpStatus.CREATED);
+			msg = "Success";
+//			response=new ResponseEntity<String>("User Added",HttpStatus.CREATED);
 		}else{
-			response=new ResponseEntity<String>("User Not Added",HttpStatus.INTERNAL_SERVER_ERROR);
+			msg = "Error";
+//			response=new ResponseEntity<String>("User Not Added",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return response;
+		return user;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String addUser(){
 		return "Hello World";
 	}
+	
+//	@RequestMapping(path="sendMail", method = RequestMethod.GET)
+//	public String sendMail(){
+////		Functions.sendEmail();
+//		return "Hello World";
+//	}
 //
 //	@Autowired
 //	private StudentService service;
