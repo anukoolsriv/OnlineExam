@@ -1,7 +1,10 @@
 package com.onlineexam.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,30 +33,27 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 //		return user1;
 	}
 
-	@Override
-	public int insertPassword(char[] OTP, String email) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	@Transactional
 	public int addUserLogin(UserLogin userLogin){
 		entityManager.persist(userLogin);
 		return 1;
 	}
 
-//	@Override
-//	@Transactional
-//	public int updatePassword(char[] OTP, String email) {
-//		String sql = "Update UserLogin u set u.password = :password where u.email= :email";
-//		Query query = entityManager.createQuery(sql);
-//		query.setParameter("password", new String(OTP));
-//		query.setParameter("email", email);
-//		
-//		int updated = query.executeUpdate();
-//		System.out.println("updated " + updated);
-//		return updated;
-//				
-//	}
+	@Override
+	@Transactional
+	public int validateLogin(UserLogin userLogin) {
+		String query = "From UserLogin u where u.email = :email and u.password = :password";
+		
+//		String jqpl="SELECT u FROM UserLogin u WHERE u.email=:email and u.password=:password";
+//		Query query=entityManager.createQuery(jqpl);
+		TypedQuery<UserLogin> typed=entityManager.createQuery(query,UserLogin.class);
+		typed.setParameter("email",userLogin.getEmail());
+		typed.setParameter("password",userLogin.getPassword());
+//		entityManager.getTransaction().begin();
+		List<UserLogin> res = typed.getResultList();
+		System.out.println(res.size());
+//		entityManager.getTransaction().commit();
+		return res.size();
+	}
 
 }

@@ -14,19 +14,27 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	@Autowired
 	private UserRegistrationDao dao;
 
+	public UserRegistrationDao getDao() {
+		return dao;
+	}
+
+	public void setDao(UserRegistrationDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
-	public boolean addUser(User user) {		
+	public boolean addUser(User user) {
 		String OTP = Functions.generatePassword();
-		
+
 		System.out.println("OTP " + OTP);
 		// set userLogin credentials
 //		UserLogin userLogin = new UserLogin(user.getUserId(), user.getEmail(), OTP);
-		
+
 //		user.setUserLogin(userLogin);
 //		user.getUserLogin().setEmail(user.getEmail());
-		
+
 		System.out.println(user);
-		
+
 		User u1 = dao.addUser(user);
 //		System.out.println("Added " + isAdded);
 		System.out.println("User Id " + u1.getUserId());
@@ -35,7 +43,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		if (u1 != null) {
 			UserLogin userLogin = new UserLogin(u1.getUserId(), u1.getEmail(), OTP);
 			int insertUserLogin = dao.addUserLogin(userLogin);
-			mailSent = Functions.sendEmail(user.getEmail(), OTP);
+			if (insertUserLogin == 1) {
+				mailSent = Functions.sendEmail(user.getEmail(), OTP);
+			}
 			if (mailSent) {
 				finalStatus = true;
 			}
@@ -52,27 +62,22 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 //		return false;
 //	}
 
-	/*public boolean updatePassword(char[] OTP, String email){
-		int updated = dao.updatePassword(OTP, email);
-		
-		if(updated == 1){
-			return true;
-		}
-		return false;
-		
-	}*/
-
-	public UserRegistrationDao getDao() {
-		return dao;
-	}
-
-	public void setDao(UserRegistrationDao dao) {
-		this.dao = dao;
-	}
+	/*
+	 * public boolean updatePassword(char[] OTP, String email){ int updated =
+	 * dao.updatePassword(OTP, email);
+	 * 
+	 * if(updated == 1){ return true; } return false;
+	 * 
+	 * }
+	 */
 
 	@Override
-	public boolean updatePassword(char[] OTP, String email) {
-		// TODO Auto-generated method stub
+	public boolean validateLogin(UserLogin userLogin) {
+		int result = dao.validateLogin(userLogin);
+
+		if (result == 1) {
+			return true;
+		}
 		return false;
 	}
 

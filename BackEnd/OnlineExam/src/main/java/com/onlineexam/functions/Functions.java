@@ -57,7 +57,7 @@ public class Functions {
 //		String recepient = "anukoolsriv@gmail.com";
 
 		// Assuming you are sending email from localhost
-		String host = "localhost";
+//		String host = "localhost";
 
 		Properties properties = new Properties();
 
@@ -87,7 +87,6 @@ public class Functions {
 			System.out.println("Sent message successfully....");
 			mailSent = true;
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mailSent;
