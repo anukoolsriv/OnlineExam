@@ -1,46 +1,52 @@
+{{registerForm.value | json}}
 <div class="tbl">
-    <form [formGroup]="registerForm" novalidate (ngSubmit)="addStudent()">
-        <!-- {{registerForm.value | json}} -->
-        <br/> {{registerForm.value | json}}
-        <table align="center">
-            <tr>
-                <th colspan="2">Registration</th>
-            </tr>
-            <tr>
-                <th>First Name*:</th>
-                <td>
-                    <input formControlName="firstName" type="text" id="firstName" name="firstName" maxlength="10" size="30" placeholder="First Name" autofocus/>
-                </td>
-            </tr>
-            <tr>
-                <th>Last Name*:</th>
-                <td>
-                    <input formControlName="lastName" type="text" id="lastName" name="lastName" maxlength="10" size="30" placeholder="Last Name" />
-                </td>
-            </tr>
-            <tr>
-                <th>Email Address : </th>
-                <td>
-                    <input formControlName="email" type="email" id="emailId" name="emailId" maxlength="40" size="30" placeholder="Email Address" />
-                </td>
-            </tr>
-            <tr>
-                <th>Mobile Number : </th>
-                <td>
-                    <input formControlName="mobile" type="number" id="mobileNumber" name="mobileNumber" maxlength="10" size="20" pattern="[7-9][0-9]{9}" title="Please enter mobile number properly." placeholder="Mobile Number" />
-                </td>
-            </tr>
-            <tr>
-                <th>Date Of Birth : </th>
-                <td>
-                    <input formControlName="dateOfBirth" type="date" id="dob" name="dob" min="1970-01-01" max="2001-12-31" />
-                </td>
-            </tr>
-            <tr>
-                <th>Select State</th>
-                <td>
-                    <select formControlName="state" name="state" id="state" (change)="populateCity()">
-                        <option value="-1">Select State</option>
+    <div id="reg">Registration</div>
+
+    <form [formGroup]="registerForm" ngValidate (ngSubmit)="addStudent()">
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+            <div *ngIf="submitted && registerForm.controls.firstName.errors" class="error">
+                <div class="text-danger" *ngIf="registerForm.controls.firstName.errors.required">FirstName is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+            <div *ngIf="submitted && registerForm.controls.lastName.errors" class="error">
+                <div class="text-danger" *ngIf="registerForm.controls.lastName.errors.required">LastName is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+            <div *ngIf="submitted && registerForm.controls.email.errors" class="error">
+                <div class="text-danger" *ngIf="registerForm.controls.email.errors.required">Field cannot be empty</div>
+                <div class="text-danger" *ngIf="registerForm.controls.email.errors.pattern">Enter Proper Email Id</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="number" formControlName="mobile" pattern="[7-9][0-9]{9,9}" maxlength="10" size="10" placeholder="mobile" name="mobile" class="form-control" id="mobile">
+            <div *ngIf="submitted && registerForm.controls.mobile.errors" class="error">
+                <div class="text-danger" *ngIf="registerForm.controls.mobile.errors.required">Field cannot be empty</div>
+                <div class="text-danger" *ngIf="registerForm.controls.mobile.errors.pattern">Mobile Number Of Wrong Length</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date Of Birth</label>
+            <input type="date" formControlName="dateOfBirth" min="1970-01-01" max="2010-12-31" placeholder="Date Of Birth" name="dateOfBirth" class="form-control" id="dateOfBirth">
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+            <select formControlName="state" placeholder="state" name="state" class="form-control" id="state" (change)="populateCity()">
+                <option value="-1">Select State</option>
                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                         <option value="Karnataka">Karnataka</option >
@@ -48,43 +54,34 @@
                         <option value="Maharashtra">Maharashtra</option>
                         <option value="Chhattisgarh">Chhattisgarh</option>
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Select City</th>
-                <td>
-                    <select formControlName="city" id="city" name="city">
-                        <option value="-1">Select City</option>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <select formControlName="city" placeholder="city" name="city" class="form-control" id="city">
+                <option value="-1">Select City</option>
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Qualification</th>
-                <td>
-                    <select formControlName="qualification" id="qualification" name="qualification">
-                        <option value="10">Class 10</option>
+        </div>
+
+        <div class="form-group">
+            <label for="qualification">Qualification</label>
+            <select formControlName="qualification" placeholder="qualification" name="qualification" class="form-control" id="qualification">
+                <option value="10 ">Class 10</option>
                         <option value="12">Class 12</option>
                         <option value="BTech">BTech</option>
                         <option value="BE">BE</option>
                         <option value="MTech">MTech</option>                        
                     </select>
+        </div>
 
-                </td>
-            </tr>
-            <tr>
-                <th>Year Of Completion</th>
-                <td><input formControlName="yearOfCompletion" type="number" id="YearOfCompletion" name="YearOfCompletion" min="1970" max="2019" pattern="[1-2][0-9]{3}" title="Please Enter Correct Year" placeholder="Year Of Completion" />
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <input type="submit" value="Register" />
-                </td>
-                <td>
-                    <input type="reset" value="Reset" />
-                </td>
-            </tr>
-        </table>
+        <div class="form-group">
+            <label for="yearOfCompletion">YearOfCompletion</label>
+            <input type="number" formControlName="yearOfCompletion" maxlength="4" min="1970" max="2019" placeholder="yearOfCompletion" name="yearOfCompletion" class="form-control" id="yearOfCompletion">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Register"> | |
+            <input type="reset" value="Reset">
+        </div>
     </form>
 </div>
-<router-outlet></router-outlet>

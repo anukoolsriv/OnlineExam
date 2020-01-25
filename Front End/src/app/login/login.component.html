@@ -1,9 +1,8 @@
-<body><table >
+<div cls="tbl">
+  <form [formGroup]="loginForm" novalidate (ngSubmit)="loginUser()" ><table align="center" ><br>
+    {{loginForm.value | json}}
     <div class="header" >
           <h1>ONLINE EXAM</h1>
-        
-         
-          
       </div>
      
       <div class="content">
@@ -13,9 +12,9 @@
           <tr>
               <th>User Name : </th>
               <td >
-              <input type="text" id="txtUN" name="txtUN"
+              <input formControlName="email" type="text" id="email" name="email"
               pattern="[A-Za-z@]{4,8}" required
-              maxlength="8" size="15" placeholder="User Name" />
+              maxlength="25" size="30" placeholder="User Name" />
               </td>
           </tr>
         </div>
@@ -23,7 +22,7 @@
           <tr >
               <th>Password : </th>
               <td>
-              <input type="password" id="txtPD" name="txtPD"
+              <input formControlName="password" type="password" id="password" name="password"
               required
               maxlength="8" size="15" placeholder="Password" />
               </td>
@@ -31,10 +30,9 @@
         </div>
            <tr>
               <td align="right">
-              <input type="submit" value="Register" />
+              <input type="submit" value="Login" onsubmit="myFunction()" />
               </td>
               </tr>
-              
            <a routerLink="/forgotPassword">Forgot Password</a>
           <iframe name="main-content"></iframe>
          
@@ -42,6 +40,9 @@
       <div class="footer">
          <small>Copyright 2018&copy; Larsen & Toubro Infotech</small>
       </div>
-      </table></body>
+      </table>
+    </form>
+   
+    </div>
   
   <router-outlet></router-outlet>

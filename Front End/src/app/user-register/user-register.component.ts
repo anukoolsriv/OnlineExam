@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { userRegister } from '../user-register';
-import { RegistrationService } from '../registration.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResponseClass } from '../Models/responseclass';
+import { RegistrationService } from '../Services/registration.service';
 
 @Component({
   selector: 'app-user-register',
@@ -11,33 +12,55 @@ import { Router } from '@angular/router';
 })
 export class UserRegisterComponent implements OnInit {
 
-  url: string = "http://localhost:9090/students";
+  // url: string = "http://localhost:9090/user";
 
   registerForm: FormGroup;
+  response : ResponseClass;
+  submitted: boolean = false;
   constructor(private formBuilder: FormBuilder,private  registrationService : RegistrationService,
             private router: Router){}
   
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      firstName: ['anukool'],
-      lastName: ['srivastava'],
-      email: ['1234@gmail.com'],
-      mobile: ['7787877878'],
-      dateOfBirth: ['2018-FEB-26'],
-      state: ['Tamil Nadu'],
-      city: ['Madurai'],
-      qualification: ['BTech'],
-      yearOfCompletion: ['2015']
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['',Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
+      mobile: ['',Validators.required],
+      dateOfBirth: [''],
+      state: [''],
+      city: [''],
+      qualification: [''],
+      yearOfCompletion: ['']
     });
   }
   
   // registerModel = new userRegister("","", "",0,new Date(), "", "", "",0);
 
   addStudent() {
+    this.submitted = true;
+    if(this.registerForm.invalid){
+      return;
+    }
+
+    // this.registrationService.register(this.registerForm.value)
+    // .subscribe(data => this.response = {
+    //   responseMessage : data['responseMessage'],
+    //   responseCode : data['responseCode'],
+    //   responseObject : data['responseObject']
+    // });
+
     this.registrationService.register(this.registerForm.value)
-    .subscribe(
-      data => {console.log("inserted")}
+    .subscribe(data => {
+      alert('success')
+       this.router.navigate(['/login'])
+   },
+   error=>{
+     alert('failed')
+     this.router.navigate(['/'])
+   }
     );
+    
+    
   }
 
   populateCity(): void {

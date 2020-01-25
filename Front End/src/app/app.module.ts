@@ -3,15 +3,17 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule, routingComponents} from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RegistrationService } from './registration.service';
-import { UserRegisterComponent } from './user-register/user-register.component';
+import { AppComponent } from './app.component';;
+import { RegistrationService } from './Services/registration.service';
+import { LoginService } from './Services/login.service';
+import { UserOptionsComponent } from './user-options/user-options.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    UserOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegistrationService],
+  providers: [RegistrationService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

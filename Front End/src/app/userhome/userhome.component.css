@@ -1,0 +1,35 @@
+a {
+    text-decoration: none;
+    background-color: lightgreen;
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+}
+
+.header {
+    background-color: rgb(49, 236, 133);
+    height: 100px;
+    border-color: black;
+    border-style: solid;
+    padding-top: 7px;
+    text-align: center;
+}
+
+#nav {
+    height: 550px;
+    background-color: white;
+    padding-top: 200px;
+    padding-top: 300px;
+}
+
+#new {
+    padding-top: 40px;
+}
+
+#selectsuj {
+    margin-left: 300px;
+}
+
+#viewreport {
+    margin-left: 200px;
+}

@@ -1,0 +1,45 @@
+a{
+    text-decoration: none;
+  background-color: lightgreen;
+ 
+  border-color:black;
+  border-style: solid;
+  padding: 15px;
+  
+   }
+   .header{
+       background-color: rgb(49, 236, 133);
+      height: 100px;
+      border-color:black;
+  border-style: solid;
+      padding-top: 7px;
+     text-align: center;
+   }
+   #nav{
+       height: 20px;
+       background-color: white;
+       padding-top: 180px;
+       
+   }
+
+   #new{
+       padding-top: 40px;
+   }
+
+#C{
+    margin-left: 450px;
+    margin-top: 10px;
+}
+#JAVA{
+    margin-left:5px;
+    
+}
+
+#html{
+    
+    margin-left: 5px;
+}
+#Angular{
+    margin-left:5px;
+    
+}
