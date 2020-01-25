@@ -1,13 +1,10 @@
 package com.onlineexam.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlineexam.dao.UserRegistrationDao;
 import com.onlineexam.functions.Functions;
-import com.onlineexam.model.Exam;
 import com.onlineexam.model.User;
 import com.onlineexam.model.UserLogin;
 
@@ -82,12 +79,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public List<Exam> fetchExams() {
-		
-		return dao.getExams();
 	}
 
 }
