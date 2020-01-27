@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ResponseClass } from '../Models/responseclass';
+import { ResponseClass } from '../Models/ResponseModel';
 import { RegistrationService } from '../Services/registration.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { RegistrationService } from '../Services/registration.service';
 })
 export class UserRegisterComponent implements OnInit {
 
-  // url: string = "http://localhost:9090/user";
+  // url: string = "http://192.168.12.75:9090/user";
 
   registerForm: FormGroup;
   response : ResponseClass;

@@ -1,6 +1,10 @@
 <h3>
     Select Subject to start Exam</h3>
-<a href="#" id="C">C langauge</a>
-<a href="#" id="JAVA">JAVA</a>
-<a href="#" id="html">HTML</a>
-<a href="#" id="Angular">Angular</a>
+
+<!-- {{exams.responseObject | json}} -->
+<div id="examList">
+    <a routerLink="/" *ngFor="let exam of exams.responseObject">
+        <button (click)="getQuestions(exam.examName)">{{ exam.examName }}</button>
+
+    </a>
+</div>

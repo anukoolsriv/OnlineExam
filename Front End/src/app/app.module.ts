@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';;
 import { RegistrationService } from './Services/registration.service';
-import { LoginService } from './Services/login.service';
 import { UserOptionsComponent } from './user-options/user-options.component';
 
 
@@ -22,7 +21,7 @@ import { UserOptionsComponent } from './user-options/user-options.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegistrationService, LoginService],
+  providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

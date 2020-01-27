@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import  {UserLogin} from '../Models/user-login';
-import{LoginService} from '../Services/login.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegistrationService } from '../Services/registration.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  url: string = "http://localhost:9090/user/fetch/";
+  // url: string = "http://192.168.12.75:9090/user/fetch/";
   
   loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private  LoginService : LoginService,
+  constructor(private formBuilder: FormBuilder,private  registrationService : RegistrationService,
             private router: Router){}
   ngOnInit() {
     this.loginForm=this.formBuilder.group( {
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   }
   loginUser(){
-    this.LoginService.login(this.loginForm.value)
+    this.registrationService.login(this.loginForm.value)
     .subscribe(data => {
      alert('success')
       this.router.navigate(['/userHome'])
