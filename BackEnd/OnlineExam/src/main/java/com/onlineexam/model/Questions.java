@@ -1,5 +1,6 @@
 package com.onlineexam.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,10 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "questions")
-public class Questions {
+public class Questions implements Serializable {
 	@Id
 	@Column(name = "question_id")
 	private int questionId;
@@ -46,6 +48,7 @@ public class Questions {
 	@JoinColumn(name = "exam_id")
 	private Exam exam;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "question")
 	private List<CacheTable> cacheEntry;
 

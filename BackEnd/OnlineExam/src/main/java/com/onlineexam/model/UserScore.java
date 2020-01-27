@@ -1,5 +1,7 @@
 package com.onlineexam.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "user_score")
-public class UserScore {
+public class UserScore implements Serializable {
 
 	@Id
 	@Column(name = "user_score_id")

@@ -1,5 +1,6 @@
 package com.onlineexam.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "exam")
-public class Exam {
+public class Exam implements Serializable{
 
 	@Id
 	@Column(name = "exam_id")

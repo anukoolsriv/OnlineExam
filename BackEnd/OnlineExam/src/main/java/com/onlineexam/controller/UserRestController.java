@@ -3,7 +3,6 @@ package com.onlineexam.controller;
 import java.util.List;
 import java.util.Set;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -101,11 +100,11 @@ public class UserRestController {
 		return response;
 	}
 	// http://192.168.12.75:9090/user/getQuestions/{exam}
-	@RequestMapping(path="/getQuestions/{exam}")
+	@RequestMapping(path="/getQuestions/{exam}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response> getExamQuestions(@PathVariable("exam") String exam){
-		System.out.println(exam);
+//		System.out.println(exam);
 		ResponseEntity<Response> response;
-		List<Question> questions = service.getExamQuestions(exam); 
+		List<Questions> questions = service.getExamQuestions(exam); 
 		Response res = new Response<>();
 		if (questions != null && questions.size() > 0) {
 			response = new ResponseEntity<>(res, HttpStatus.CREATED);

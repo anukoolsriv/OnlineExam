@@ -1,5 +1,6 @@
 package com.onlineexam.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="admin_login")
-public class AdminLogin {
+public class AdminLogin implements Serializable{
 	@Id
 	@Column(name="admin_id")
 	private int adminId;

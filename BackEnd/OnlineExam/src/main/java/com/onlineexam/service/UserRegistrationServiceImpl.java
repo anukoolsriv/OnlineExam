@@ -4,13 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlineexam.dao.UserRegistrationDao;
 import com.onlineexam.functions.Functions;
 import com.onlineexam.model.Exam;
+import com.onlineexam.model.Questions;
 import com.onlineexam.model.User;
 import com.onlineexam.model.UserLogin;
 
@@ -107,7 +107,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	}
 
 	@Override
-	public List<Question> getExamQuestions(String exam) {
+	public List<Questions> getExamQuestions(String exam) {
 		
 		return dao.getExamQuestions(exam);
 	}

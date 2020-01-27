@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineexam.model.Exam;
+import com.onlineexam.model.Questions;
 import com.onlineexam.model.User;
 import com.onlineexam.model.UserLogin;
 
@@ -78,11 +78,14 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 	}
 
 	@Override
-	public List<Question> getExamQuestions(String exam) {
-		String query = "From Questions q where q.examName = :examName";
-		TypedQuery<Question> typed = entityManager.createQuery(query, Question.class);
+	public List<Questions> getExamQuestions(String exam) {
+		System.out.println(exam);
+		String query = "Select q from Questions q, Exam e where q.exam = e and e.examName = :examName";
+		TypedQuery<Questions> typed = entityManager.createQuery(query, Questions.class);
+		typed.setParameter("examName", exam.toUpperCase());
 		
-		List<Question> questions = typed.getResultList();
+		List<Questions> questions = typed.getResultList();
+		System.out.println(questions);
 		return questions;
 	}
 

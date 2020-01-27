@@ -1,5 +1,7 @@
 package com.onlineexam.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Cache_table")
 
-public class CacheTable {
+public class CacheTable implements Serializable {
 	@Id
 	@Column(name = "cache_id")
 	private int cacheId;
