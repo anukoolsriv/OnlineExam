@@ -1,7 +1,10 @@
 package com.onlineexam.service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,9 +88,28 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	}
 
 	@Override
-	public List<Exam> fetchExams() {
+	public Set<Exam> fetchExams() {
+		List<Exam> examsList = dao.getExams();
+		HashSet<Exam> examSet = new HashSet<Exam>();
+
+//		System.out.println("List");
+//		exam.equals(exams);
+		for(Exam e : examsList){
+			examSet.add(e);
+		}
 		
-		return dao.getExams();
+//		System.out.println("Set");
+		for(Exam e : examSet){
+			System.out.println(e.getExamName() + " " + e.getExamId());
+		}
+		
+		return examSet;
+	}
+
+	@Override
+	public List<Question> getExamQuestions(String exam) {
+		
+		return dao.getExamQuestions(exam);
 	}
 
 }

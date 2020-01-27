@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "questions")
 public class Questions {
@@ -18,8 +20,8 @@ public class Questions {
 	@Column(name = "question_id")
 	private int questionId;
 
-	// @Column(name = "exam_id")
-	// private int examId;
+//	@Column(name = "exam_id")
+//	private int examId;
 
 	@Column(name = "question")
 	private String question;
@@ -39,6 +41,7 @@ public class Questions {
 	@Column(name = "correct_answer")
 	private String correctAnswer;
 
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "exam_id")
 	private Exam exam;

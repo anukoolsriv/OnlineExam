@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "user_score")
 public class UserScore {
@@ -20,6 +22,7 @@ public class UserScore {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "exam_id")
 	private Exam exam;

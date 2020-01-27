@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,12 +67,23 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 
 	@Override
 	public List<Exam> getExams() {
-		String query = "SELECT e.examId, DISTINCT(e.examName) from Exam e";
+//		String query = "SELECT e.examId, DISTINCT(e.examName) from Exam e";
+		String query = "From Exam";
+//		TypedQuery<Exam> typed = entityManager.createQuery(query, Exam.class);
 		TypedQuery<Exam> typed = entityManager.createQuery(query, Exam.class);
 
 		List<Exam> exams = typed.getResultList();
-		System.out.println(exams.size());
+//		System.out.println(exams.size());
 		return exams;
+	}
+
+	@Override
+	public List<Question> getExamQuestions(String exam) {
+		String query = "From Questions q where q.examName = :examName";
+		TypedQuery<Question> typed = entityManager.createQuery(query, Question.class);
+		
+		List<Question> questions = typed.getResultList();
+		return questions;
 	}
 
 }

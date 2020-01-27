@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "exam")
@@ -28,20 +31,24 @@ public class Exam {
 
 	@Column(name = "end_time")
 	private String endTime;
-	
-	@OneToMany(mappedBy="exam")
-	private List<UserScore> userScores;
-	
-	@OneToMany(mappedBy="exam")
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
+	private List<CacheTable> cacheTable;
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
 	private List<Questions> questions;
 
-	@OneToMany(mappedBy="exam")
+	@JsonManagedReference
+	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
 	private List<UserScore> scores;
 
-	@ManyToMany(mappedBy="exams")
+	@JsonManagedReference
+	@ManyToMany(mappedBy = "exams", fetch=FetchType.LAZY)
 	private List<AdminLogin> adminLogins;
-	
-		public Exam() {
+
+	public Exam() {
 		super();
 	}
 
@@ -121,4 +128,55 @@ public class Exam {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
+
+	public List<CacheTable> getCacheTable() {
+		return cacheTable;
+	}
+
+	public void setCacheTable(List<CacheTable> cacheTable) {
+		this.cacheTable = cacheTable;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((examName == null) ? 0 : examName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Exam other = (Exam) obj;
+		if (examName == null) {
+			if (other.examName != null)
+				return false;
+		} else if (!examName.equals(other.examName))
+			return false;
+		return true;
+	}
+	//
+	// @Override
+	// public boolean equals(Object obj) {
+	//
+	// if (obj instanceof Exam) {
+	//
+	// Exam e = (Exam) obj;
+	//
+	// if (this.examName == e.examName) {
+	// return true;
+	// } else {
+	// return false;
+	// }
+	// }
+	// else{
+	// return false;
+	// }
+	// }
 }
