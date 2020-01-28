@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminServiceService {
-
-  url: string ='http://192.168.12.75:9090/user'
+  url: string ='http://192.168.43.15:9090/user'
+  // url: string ='http://192.168.12.75:9090/user'
   constructor(private http: HttpClient) { }
 
   // upload file

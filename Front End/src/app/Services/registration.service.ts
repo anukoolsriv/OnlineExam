@@ -11,7 +11,8 @@ import { QuestionModel } from '../Models/QuestionModel';
 })
 export class RegistrationService {
 
-  url: string ='http://192.168.12.75:9090/user';
+  url: string ='http://192.168.43.15:9090/user'
+  // url: string ='http://192.168.12.75:9090/user';
   // public exams = [];
 
 
@@ -36,5 +37,11 @@ export class RegistrationService {
   getQuestions(exam: string) : Observable<QuestionModel[]> {
     let tempUrl = this.url + "/getQuestions/" + exam;
     return this.http.get<QuestionModel[]>(tempUrl,{responseType:'json'})
+  }
+
+  // match answers for the question
+  matchAnswers(questionId: number, radioSelected: any) {
+    let tempUrl = this.url + "/matchAnswers/" + questionId + "/" + radioSelected;
+    return this.http.get<any>(tempUrl,{responseType:'json'})
   }
 }

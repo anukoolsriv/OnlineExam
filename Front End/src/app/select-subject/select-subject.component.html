@@ -1,7 +1,7 @@
 <h3>
     Select Subject to start Exam</h3>
 
-<!-- {{exams.responseObject | json}} -->
+{{exams.responseObject | json}}
 <div id="examList" *ngIf="!flag">
     <div class="exams" *ngFor="let exam of exams.responseObject">
         <button (click)="getQuestions(exam.examName)">{{ exam.examName }}</button>
