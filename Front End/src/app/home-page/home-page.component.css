@@ -1,44 +1,66 @@
-.header{
-    background-color: antiquewhite;
-    padding:30px 30px;
+.header {
+    height: 100vh;
+    background-position: center;
+    padding: 30px 30px;
     margin-bottom: 0px;
     position: relative;
-    text-align: center;   
-}
-.nav{
-    
-    display: inline;
-    padding: 100px 100px;
-    height: 50px;
-    width: 50px;    
+    text-align: center;
+    font-family: 'Trebuchet MS';
 }
 
-.footer{
-    background-color: cyan;
+.nav {
+    display: inline;
+    padding: 100px 100px;
+    /* height: 50px;
+    width: 50px; */
+}
+
+.footer {
     padding: 20px 20px;
-   position: relative;   
+    position: relative;
 }
-.user{
-    background-color: darkgray;
+
+.login {
     display: inline;
     padding: 50px 50px 50px 50px;
 }
-.admin{
-    background-color: darkred;
+
+.login a {
+    float: left;
+    text-decoration: none;
+    padding: 5x 20px;
+    border: 10px solid;
+}
+
+.admin {
     display: inline;
     padding: 50px 50px 50px 50px;
 }
-.home{
-    background-color: hotpink;
+
+.admin a {
+    float: left;
+    text-decoration: none;
+    padding: 5x 20px;
+    border: 10px solid;
+}
+
+.home {
     display: inline;
     padding: 10px 10px;
     text-decoration: none;
     text-align: left;
-   
 }
-.aboutus{
-    background-color: lightblue;
+
+.aboutus {
     display: inline;
     padding: 10px 10px;
-   text-align: left;
+    text-align: left;
+}
+
+.body {
+    background-image: url("/assets/images/WebDev.jpg");
+}
+
+p {
+    color: white;
 }

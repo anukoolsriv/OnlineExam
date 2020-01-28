@@ -1,55 +1,72 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 body {
-    /* background-image:url('/Online-Exam-User-Registration/src/assets/images/robo1.jpg'); */
-    font-family: 'Trebuchet MS';
-    font-size: 18px;
-    height: 575px;
-    width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url("/assets/images/1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 
-.header {
-    background-image: url('/assets/images/abstract.jpg');
-    background-color: antiquewhite;
-    height: 20%;
-}
-
-h1 {
-    text-align: center;
+.login-box {
+    width: 400px;
+    height: 520px;
     color: green;
-    font-size: 2.5em;
+    top: 50%;
+    left: 50%;
+    padding: 60px 30px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    box-shadow: 8px 8px 50px #000;
 }
 
-.user {
-    text-align: center;
-    background-color: silver;
+.login-box h1 {
+    float: left;
+    font-size: 40px;
+    border-bottom: 6px solid #4caf50;
+    margin-bottom: 50px;
+    padding: 13px;
 }
 
-.content {
-    text-align: center;
-    /* background-image: url('/Online-Exam-User-Registration/src/assets/images/robo.jpg'); */
+.textbox {
     width: 100%;
-    height: 75%;
-    float: right;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #4caf50;
 }
 
-.footer {
-    text-align: center;
-    background-color: thistle;
-    width: 100%;
-    height: 5%;
-    float: right;
-}
-
-.user {
-    margin: auto auto auto auto;
-}
-
-tr {
+.textbox i {
+    width: 26px;
+    float: left;
     text-align: center;
 }
 
-.content iframe {
-    width: 100%;
-    height: 100%;
+.textbox input {
+    border: thin;
+    border-style: dotted;
 }
+
+.btn {
+    width: 100%;
+    background: none;
+    border: 2px solid #4caf50;
+    color: black;
+    padding: 5px;
+    cursor: pointer;
+    margin: 12px o;
+}
+
+h3 {
+    color: black;
+}
+
+
+/* .logout{
+
+    
+} */

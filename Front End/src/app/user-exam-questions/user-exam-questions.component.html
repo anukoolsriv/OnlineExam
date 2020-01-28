@@ -1,0 +1,21 @@
+<p>user-exam-questions works!</p>
+
+{{questions | json}}
+<hr/>
+<div *ngIf="questions">
+    <div *ngFor="let question of questions.responseObject">
+        <label name="question"> {{question.question}}</label>
+        <br/>
+
+        <input type="radio" name="options" value="{{question.option1}}">{{question.option1}}
+        <br/>
+        <input type="radio" name="options" value="{{question.option2}}">{{question.option2}}
+        <br/>
+        <input type="radio" name="options" value="{{question.option3}}">{{question.option3}}
+        <br/>
+        <input type="radio" name="options" value="{{question.option4}}">{{question.option4}}
+        <br/>
+        <input type="button" value="Record Answer">
+
+    </div>
+    <div class=""></div>

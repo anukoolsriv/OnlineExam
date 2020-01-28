@@ -2,9 +2,11 @@
     Select Subject to start Exam</h3>
 
 <!-- {{exams.responseObject | json}} -->
-<div id="examList">
-    <a routerLink="/" *ngFor="let exam of exams.responseObject">
+<div id="examList" *ngIf="!flag">
+    <div class="exams" *ngFor="let exam of exams.responseObject">
         <button (click)="getQuestions(exam.examName)">{{ exam.examName }}</button>
-
-    </a>
+    </div>
+</div>
+<div *ngIf="flag">
+    <app-quiz></app-quiz>
 </div>

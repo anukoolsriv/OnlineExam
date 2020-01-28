@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm=this.formBuilder.group( {
       email:['anukoolsriv@gmail.com'],
-      password:['']
+      password:[''],
  });
 
   }
@@ -24,11 +24,13 @@ export class LoginComponent implements OnInit {
     this.registrationService.login(this.loginForm.value)
     .subscribe(data => {
      alert('success')
+     localStorage.setItem("username",this.loginForm.controls.email.value);
       this.router.navigate(['/userHome'])
   },
   error=>{
-    alert('failed')
-    this.router.navigate(['/'])
+    alert('Invalid Login Credentials')
+    localStorage.removeItem('username');
+    this.router.navigate(['/login'])
   }
 
   );

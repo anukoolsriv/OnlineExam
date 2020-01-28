@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
+  flag: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onClick():void{
+    this.flag = !this.flag;
+}
 }

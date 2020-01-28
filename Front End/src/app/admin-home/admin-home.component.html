@@ -1,0 +1,11 @@
+<p>admin-home works!</p>
+
+<div>
+    <button (click)="displayPage($event)" id="AddQuestions">Add Questions</button> |
+    <button (click)="displayPage($event)" id="RemoveQuestions">Remove Questions</button> |
+    <button (click)="displayPage($event)" id="ViewReport">View your report</button>
+
+    <app-admin-add-exam *ngIf="addQuestionFlag"></app-admin-add-exam>
+    <app-admin-remove-exam *ngIf="removeQuestionFlag"></app-admin-remove-exam>
+    <app-admin-view-report *ngIf="viewReportFlag"></app-admin-view-report>
+</div>

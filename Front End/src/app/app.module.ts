@@ -6,13 +6,24 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';;
 import { RegistrationService } from './Services/registration.service';
 import { UserOptionsComponent } from './user-options/user-options.component';
+import { UserExamQuestionsComponent } from './user-exam-questions/user-exam-questions.component';
+import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminRemoveExamComponent } from './admin-remove-exam/admin-remove-exam.component';
+import { AdminViewReportComponent } from './admin-view-report/admin-view-report.component';
+import { AdminServiceService } from './Services/admin-service.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    UserOptionsComponent
+    UserOptionsComponent,
+    UserExamQuestionsComponent,
+    AdminAddExamComponent,
+    AdminHomeComponent,
+    AdminRemoveExamComponent,
+    AdminViewReportComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +32,7 @@ import { UserOptionsComponent } from './user-options/user-options.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegistrationService],
+  providers: [RegistrationService,AdminServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,9 @@ import { QuestionModel } from '../Models/QuestionModel';
 export class RegistrationService {
 
   url: string ='http://192.168.12.75:9090/user';
+  // public exams = [];
+
+
   constructor(private http: HttpClient) { }
 
   //register user
@@ -31,7 +34,7 @@ export class RegistrationService {
   
   // get questions based on exam
   getQuestions(exam: string) : Observable<QuestionModel[]> {
-    let tempUrl = this.url + "/getQuestions" + exam;
+    let tempUrl = this.url + "/getQuestions/" + exam;
     return this.http.get<QuestionModel[]>(tempUrl,{responseType:'json'})
   }
 }

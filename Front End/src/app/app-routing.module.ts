@@ -7,6 +7,10 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { SelectSubjectComponent } from './select-subject/select-subject.component';
+import { UserExamQuestionsComponent } from './user-exam-questions/user-exam-questions.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
 
 
 const routes: Routes = [
@@ -16,7 +20,12 @@ const routes: Routes = [
   {path:'resetPassword', component:ResetPasswordComponent},
   {path: 'forgotPassword', component:ForgotPasswordComponent},
   {path:'userHome',component:UserhomeComponent},
-  {path:'selectExam',component:SelectSubjectComponent}
+  {path:'selectExam',component:SelectSubjectComponent},
+  {path:'userExamQuestions', component:UserExamQuestionsComponent},
+  {path:'Quiz',component:QuizComponent},
+  {path:'AdminHome',component:AdminHomeComponent},
+  {path:'AdminAddExam',component:AdminAddExamComponent}
+
 ];
 
 @NgModule({
@@ -30,6 +39,9 @@ export const routingComponents = [HomePageComponent,
                                   ResetPasswordComponent,
                                   ForgotPasswordComponent,
                                   UserhomeComponent,
-                                  SelectSubjectComponent  
-                                  
+                                  SelectSubjectComponent,
+                                  UserExamQuestionsComponent,
+                                  QuizComponent,
+                                  AdminHomeComponent,
+                                  AdminAddExamComponent                    
                                   ]
