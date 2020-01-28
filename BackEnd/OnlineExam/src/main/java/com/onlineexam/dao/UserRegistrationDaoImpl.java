@@ -69,6 +69,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 	public List<Exam> getExams() {
 //		String query = "SELECT e.examId, DISTINCT(e.examName) from Exam e";
 		String query = "From Exam";
+		System.out.println("dao");
 //		TypedQuery<Exam> typed = entityManager.createQuery(query, Exam.class);
 		TypedQuery<Exam> typed = entityManager.createQuery(query, Exam.class);
 
@@ -87,6 +88,18 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 		List<Questions> questions = typed.getResultList();
 		System.out.println(questions);
 		return questions;
+	}
+
+	@Override
+	public int validateAnswer(int questionId, String answerGiven) {
+//		System.out.println(questionId + "/" + answerGiven);
+		String query = "From Questions q where q.questionId = :questionId and q.correctAnswer= :answerGiven";
+		TypedQuery<Questions> typed = entityManager.createQuery(query,Questions.class);
+		typed.setParameter("questionId", questionId);
+		typed.setParameter("answerGiven", answerGiven);
+		
+		List<Questions> questions = typed.getResultList();
+		return questions.size();
 	}
 
 }

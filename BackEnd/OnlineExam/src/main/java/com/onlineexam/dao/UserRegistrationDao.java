@@ -13,4 +13,5 @@ public interface UserRegistrationDao {
 	public int validateLogin(UserLogin userLogin);
 	public List<Exam> getExams();
 	public List<Questions> getExamQuestions(String exam);
+	public int validateAnswer(int questionId, String answerGiven);
 }

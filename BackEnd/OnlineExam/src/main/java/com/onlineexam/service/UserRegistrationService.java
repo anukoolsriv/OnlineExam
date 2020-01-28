@@ -13,4 +13,5 @@ public interface UserRegistrationService {
 	public boolean validateLogin(UserLogin userLogin);
 	public Set<Exam> fetchExams();
 	public List<Questions> getExamQuestions(String exam);
+	public boolean validateAnswer(int questionId, String answerGiven);
 }

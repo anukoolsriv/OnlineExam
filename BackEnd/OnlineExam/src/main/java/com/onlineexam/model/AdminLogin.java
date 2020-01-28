@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="admin_login")
 public class AdminLogin implements Serializable{
@@ -25,6 +27,7 @@ public class AdminLogin implements Serializable{
 	@Column(name="password")
 	private String adminPassword;
 	
+	@JsonBackReference
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="admin_exam", joinColumns={@JoinColumn(name="admin_id")}, inverseJoinColumns={@JoinColumn(name="exam_id")})
 	private List<Exam> exams;

@@ -97,6 +97,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		for(Exam e : examsList){
 			examSet.add(e);
 		}
+		System.out.println("service");
 		
 //		System.out.println("Set");
 		for(Exam e : examSet){
@@ -110,6 +111,16 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	public List<Questions> getExamQuestions(String exam) {
 		
 		return dao.getExamQuestions(exam);
+	}
+
+	@Override
+	public boolean validateAnswer(int questionId, String answerGiven) {
+		int result = dao.validateAnswer(questionId, answerGiven);
+
+		if (result == 1) {
+			return true;
+		}
+		return false;
 	}
 
 }

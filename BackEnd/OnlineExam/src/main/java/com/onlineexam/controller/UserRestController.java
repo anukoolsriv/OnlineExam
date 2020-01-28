@@ -91,13 +91,16 @@ public class UserRestController {
 	public ResponseEntity<Response> fetchExams() {
 		Set<Exam> exams = service.fetchExams();
 		ResponseEntity<Response> response;
+//		System.out.println(exams);
 		Response res = new Response<>();
 		if (exams != null && exams.size() > 0) {
+			System.out.println("success");
 			response = new ResponseEntity<>(res, HttpStatus.CREATED);
 			res.setResponseCode(200);
 			res.setResponseMessage("Exams Fetched");
 			res.setResponseObject(exams);
 		} else {
+			System.out.println("fail");
 			response = new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
 			res.setResponseCode(400);
 			res.setResponseMessage("Exam Does Not Exist");
@@ -106,7 +109,7 @@ public class UserRestController {
 		return response;
 	}
 	// http://192.168.12.75:9090/user/getQuestions/{exam}
-	@RequestMapping(path="/getQuestions/{exam}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path="/getQuestions/{exam}",method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response> getExamQuestions(@PathVariable("exam") String exam){
 //		System.out.println(exam);
 		ResponseEntity<Response> response;
@@ -122,6 +125,25 @@ public class UserRestController {
 			res.setResponseCode(400);
 			res.setResponseMessage("Questions Could not be fetched");
 			res.setResponseObject(null);
+		}
+		return response;
+	}
+	
+	@RequestMapping(path = "/matchAnswers/{questionId}/{answerGiven}", method = RequestMethod.GET)
+	public ResponseEntity<Response> validateLogin(@PathVariable("questionId") int questionId,@PathVariable("answerGiven") String answerGiven) {
+		boolean result = service.validateAnswer(questionId,answerGiven);
+		ResponseEntity<Response> response;
+		Response res = new Response<>();
+		if (result) {
+			response = new ResponseEntity<>(res, HttpStatus.CREATED);
+			res.setResponseCode(200);
+			res.setResponseMessage("Success");
+//			res.setResponseObject("Login Successful");
+		} else {
+			response = new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
+			res.setResponseCode(400);
+			res.setResponseMessage("Failed");
+//			res.setResponseObject("User Does Not Exist");
 		}
 		return response;
 	}
