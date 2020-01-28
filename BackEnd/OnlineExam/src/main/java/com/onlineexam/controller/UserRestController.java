@@ -1,5 +1,6 @@
 package com.onlineexam.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
@@ -54,6 +55,11 @@ public class UserRestController {
 			// Added",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return response;
+	}
+	
+	@RequestMapping(path="uploadFile", method=RequestMethod.POST)
+	public String uploadFile(){
+		return "Hello World";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
