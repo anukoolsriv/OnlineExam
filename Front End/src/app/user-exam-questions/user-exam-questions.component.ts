@@ -9,10 +9,20 @@ export class UserExamQuestionsComponent implements OnInit {
   
   public questions = []
 
+  radioSelected: any;
+
   constructor() { }
 
   ngOnInit() {
     this.questions = JSON.parse(localStorage.getItem('examQuestions'))
+  }
+  recordAnswer(questionId : number){
+    // console.log('hello')
+    console.log(questionId)
+    console.log(this.radioSelected);
+
+    
+
   }
 
 }
