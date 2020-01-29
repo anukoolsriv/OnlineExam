@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Cache_table")
 
@@ -18,14 +21,19 @@ public class CacheTable implements Serializable {
 	@Column(name = "cache_id")
 	private int cacheId;
 
+//	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
 
+//	@JsonBackReference
+//	@JsonIgnoreProperties("cacheTable")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "exam_id")
 	private Exam exam;
 
+//	@JsonBackReference
+//	@JsonIgnoreProperties("cacheEntry")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "question_id")
 	private Questions question;
@@ -61,8 +69,6 @@ public class CacheTable implements Serializable {
 	public void setQuestion(Questions question) {
 		this.question = question;
 	}
-
-	
 
 	public Exam getExam() {
 		return exam;

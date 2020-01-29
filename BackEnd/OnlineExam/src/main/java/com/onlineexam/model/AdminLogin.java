@@ -27,7 +27,7 @@ public class AdminLogin implements Serializable{
 	@Column(name="password")
 	private String adminPassword;
 	
-	@JsonBackReference
+//	@JsonBackReference
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="admin_exam", joinColumns={@JoinColumn(name="admin_id")}, inverseJoinColumns={@JoinColumn(name="exam_id")})
 	private List<Exam> exams;

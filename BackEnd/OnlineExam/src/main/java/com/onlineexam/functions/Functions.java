@@ -98,8 +98,8 @@ public class Functions {
 		// Set From: header field of the header.
 			message.setFrom(new InternetAddress(email));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-			message.setSubject("This is the Subject Line!");
-			message.setText("Welcome! Your Default Password is" + OTP);			
+			message.setSubject("Registration Completed!");
+			message.setText("Welcome To Eklavya! <br>Your Default Password is" + OTP);			
 			return message;
 		}
 		catch(MessagingException e){

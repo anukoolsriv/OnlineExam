@@ -20,6 +20,7 @@ import com.onlineexam.model.Exam;
 import com.onlineexam.model.Questions;
 import com.onlineexam.model.Response;
 import com.onlineexam.model.User;
+import com.onlineexam.model.UserAnswer;
 import com.onlineexam.model.UserLogin;
 import com.onlineexam.service.UserRegistrationService;
 
@@ -38,9 +39,7 @@ public class UserRestController {
 		ResponseEntity<Response> response;
 		Response res = new Response<>();
 		if (result) {
-			response = new ResponseEntity<>(res, HttpStatus.CREATED);
-			
-			
+			response = new ResponseEntity<>(res, HttpStatus.CREATED);						
 			res.setResponseCode(200);
 			res.setResponseMessage("Success");
 			res.setResponseObject("User Inserted");
@@ -57,15 +56,15 @@ public class UserRestController {
 		return response;
 	}
 	
-	@RequestMapping(path="uploadFile", method=RequestMethod.POST)
-	public String uploadFile(){
-		return "Hello World";
-	}
-
-	@RequestMapping(method = RequestMethod.GET)
-	public String addUser() {
-		return "Hello World";
-	}
+//	@RequestMapping(path="uploadFile", method=RequestMethod.POST)
+//	public String uploadFile(){
+//		return "Hello World";
+//	}
+//
+//	@RequestMapping(method = RequestMethod.GET)
+//	public String addUser() {
+//		return "Hello World";
+//	}
 
 	// http://http://192.168.12.75:9090/user/login
 	@RequestMapping(path = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -144,6 +143,26 @@ public class UserRestController {
 			res.setResponseCode(400);
 			res.setResponseMessage("Failed");
 //			res.setResponseObject("User Does Not Exist");
+		}
+		return response;
+	}
+	
+	@RequestMapping(path="setUserScore",method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response> addUserScore(@RequestBody UserAnswer userAnswer){
+		System.out.println(userAnswer.getDateOfExam());
+		boolean result = service.addScore(userAnswer);
+		ResponseEntity<Response> response;
+		Response res = new Response<>();
+		if (result) {
+			response = new ResponseEntity<>(res, HttpStatus.CREATED);
+			res.setResponseCode(200);
+			res.setResponseMessage("Success");
+			res.setResponseObject("Score Updated");
+		} else {
+			response = new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
+			res.setResponseCode(400);
+			res.setResponseMessage("Failed");
+			res.setResponseObject("Score Not Updated");
 		}
 		return response;
 	}

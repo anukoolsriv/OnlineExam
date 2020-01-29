@@ -12,7 +12,9 @@ import com.onlineexam.functions.Functions;
 import com.onlineexam.model.Exam;
 import com.onlineexam.model.Questions;
 import com.onlineexam.model.User;
+import com.onlineexam.model.UserAnswer;
 import com.onlineexam.model.UserLogin;
+import com.onlineexam.model.UserScore;
 
 @Service
 public class UserRegistrationServiceImpl implements UserRegistrationService {
@@ -116,6 +118,27 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	@Override
 	public boolean validateAnswer(int questionId, String answerGiven) {
 		int result = dao.validateAnswer(questionId, answerGiven);
+
+		if (result == 1) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addScore(UserAnswer userAnswer) {
+		
+		User user = dao.fetchUserId(userAnswer.getUserEmail());
+		Exam exam = dao.fetchExamId(userAnswer.getExamName());
+		
+		UserScore userScore = new UserScore();
+		userScore.setUser(user);
+		userScore.setExam(exam);
+		userScore.setScorePerAttempt(userAnswer.getScore());
+		userScore.setDateOfExam(userAnswer.getDateOfExam());
+		userScore.setTimeTaken(userAnswer.getTimeTaken());
+		
+		int result = dao.addScore(userScore);
 
 		if (result == 1) {
 			return true;

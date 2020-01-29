@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "user_login")
 
@@ -27,6 +29,7 @@ public class UserLogin implements Serializable {
 	@Column(name = "otp")
 	private String otp;
 
+	@JsonBackReference
 	@OneToOne(mappedBy = "userLogin")
 	private User user;
 

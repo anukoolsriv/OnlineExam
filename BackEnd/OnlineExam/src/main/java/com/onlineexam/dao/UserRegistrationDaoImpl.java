@@ -13,6 +13,7 @@ import com.onlineexam.model.Exam;
 import com.onlineexam.model.Questions;
 import com.onlineexam.model.User;
 import com.onlineexam.model.UserLogin;
+import com.onlineexam.model.UserScore;
 
 @Repository
 public class UserRegistrationDaoImpl implements UserRegistrationDao {
@@ -100,6 +101,41 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao {
 		
 		List<Questions> questions = typed.getResultList();
 		return questions.size();
+	}
+
+	@Override
+	@Transactional
+	public int addScore(UserScore userScore) {
+		entityManager.persist(userScore);
+		return 1;
+	}
+
+	@Override
+	public User fetchUserId(String userEmail) {
+		// TODO Auto-generated method stub
+		
+		String query = "Select u from User u where u.email = :email";
+		TypedQuery<User> typed = entityManager.createQuery(query,User.class);
+		typed.setParameter("email",userEmail);
+		
+		List<User> user = typed.getResultList();
+		
+		System.out.println("Id " + user.get(0));
+		
+		return user.get(0);
+	}
+
+	@Override
+	public Exam fetchExamId(String examName) {
+		String query = "Select e from Exam e where e.examName = :examName";
+		TypedQuery<Exam> typed = entityManager.createQuery(query,Exam.class);
+		typed.setParameter("examName",examName);
+		
+		List<Exam> exam = typed.getResultList();
+		
+		System.out.println("ExamId " + exam.get(0));
+		
+		return exam.get(0);
 	}
 
 }

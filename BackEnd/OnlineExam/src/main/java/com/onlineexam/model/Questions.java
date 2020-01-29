@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -44,11 +45,13 @@ public class Questions implements Serializable {
 	private String correctAnswer;
 
 	@JsonBackReference
+//	@JsonIgnoreProperties("questions")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "exam_id")
 	private Exam exam;
 
-	@JsonManagedReference
+//	@JsonManagedReference
+//	@JsonIgnoreProperties("question")
 	@OneToMany(mappedBy = "question")
 	private List<CacheTable> cacheEntry;
 

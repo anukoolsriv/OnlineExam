@@ -14,6 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "user_registration")
 @SequenceGenerator(name = "seq", sequenceName = "userid_seq", allocationSize = 1, initialValue = 1)
@@ -56,13 +59,16 @@ public class User implements Serializable {
 	@Column(name = "year_of_completion")
 	private int yearOfCompletion;
 
+	@JsonManagedReference
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private UserLogin userLogin;
 
+//	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	private List<UserScore> scores;
 
+//	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	private List<CacheTable> cacheEntry;
 

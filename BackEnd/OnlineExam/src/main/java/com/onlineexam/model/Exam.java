@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -33,19 +35,22 @@ public class Exam implements Serializable{
 	@Column(name = "end_time")
 	private String endTime;
 
-	@JsonManagedReference
+//	@JsonManagedReference
+//	@JsonIgnore
+//	@JsonIgnoreProperties("exam")
 	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
 	private List<CacheTable> cacheTable;
 
 	@JsonManagedReference
+//	@JsonIgnoreProperties("exam")
 	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
 	private List<Questions> questions;
 
 	@JsonManagedReference
+//	@JsonIgnore
 	@OneToMany(mappedBy = "exam", fetch=FetchType.LAZY)
 	private List<UserScore> scores;
 
-	@JsonManagedReference
 	@ManyToMany(mappedBy = "exams", fetch=FetchType.LAZY)
 	private List<AdminLogin> adminLogins;
 
