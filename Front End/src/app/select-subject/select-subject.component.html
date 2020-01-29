@@ -1,12 +1,18 @@
-<h3>
-    Select Subject to start Exam</h3>
-
-{{exams.responseObject | json}}
+<div id="WelcomeMessage">
+    <span>{{name}}</span>
+    <button class="logOutButton" name="logout" (click)="onLogOut()">Logout</button>
+</div>
+<h3 class="Subject">
+    Select Subject to start Exam
+</h3>
+<!-- {{exams.responseObject | json}} -->
 <div id="examList" *ngIf="!flag">
     <div class="exams" *ngFor="let exam of exams.responseObject">
-        <button (click)="getQuestions(exam.examName)">{{ exam.examName }}</button>
+        <button class="examButtons" (click)="getQuestions(exam.examName)">{{ exam.examName }}</button>
     </div>
 </div>
+
 <div *ngIf="flag">
     <app-quiz></app-quiz>
+    <!-- <button logout></button> -->
 </div>

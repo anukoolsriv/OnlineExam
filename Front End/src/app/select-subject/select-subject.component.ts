@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class SelectSubjectComponent implements OnInit {
 
   public exams = [];
-
+  name : string =  "Hello! ";
   flag: boolean = false;
   constructor(private registrationService: RegistrationService, private router: Router) { }
 
@@ -19,12 +19,14 @@ export class SelectSubjectComponent implements OnInit {
 
     if (localStorage.getItem("username") == null) {
       alert('Please login First')
+      this.name += "Visitor";
       this.router.navigate(['/login'])
     }
     else {
       this.registrationService.fetchExams().subscribe(data =>{
         this.exams = data
       });
+      this.name += localStorage.getItem("username")
     }
 
   }
@@ -46,5 +48,10 @@ export class SelectSubjectComponent implements OnInit {
         this.flag = false
       });
 
+  }
+  onLogOut(){
+    alert("Thank You For Your Time, Logging You Out...")
+    localStorage.removeItem("username");
+    this.router.navigate(['/login'])
   }
 }

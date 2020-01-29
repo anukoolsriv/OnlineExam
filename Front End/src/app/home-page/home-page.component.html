@@ -1,34 +1,39 @@
-<div class="body">
-    <div class="header">
-        <h1>WELCOME TO EKALAVYA</h1>
-        <div class="home">
-            <a routerLink="" (click)="onClick()">Home</a>
-        </div>
-        <div>
-            <p *ngIf="flag; else else_block">
+<body>
+    <div class="body">
+        <header class="logo">
+            <img src="assets/images/2.png/">
+        </header>
+        <div class="header">
+            <h1>WELCOME TO EKALAVYA</h1>
+            <div class="home">
+                <a routerLink="" (click)="onClick()">About Us</a>
+            </div>
+            <div>
+                <p *ngIf="flag; else else_block">
 
-            </p><br>
-            <ng-template #else_block>
+                </p><br>
+                <ng-template #else_block>
 
-            </ng-template>
-        </div>
-        <div class="aboutus">
-            <a routerLink="" (click)="toggle()">AboutUs</a>
-        </div>
-        <div>
-            <p *ngIf="flag; else else_block">
-                EKALAVYA platform supports facility to conduct online test series. Indian education system favors practice mock papers to prepare for the competitive exams.Success for each competitive exam depends on preparation for each topic and practicing mock exams.
-                If you are running coaching institute and want to digitize your examination process then EKALAVYA is right platform for you. Each assessment can provide detailed analysis of the individual in terms of strong area, weak area, percentile
-                score, ranking in the batch. Based on the analytics , students can decide about their focus area for the preparation of actual exam.
-            </p>
+                </ng-template>
+            </div>
+            <div class="AbouTuS">
+                <a routerLink="" (click)="toggle()">Home</a>
+            </div>
+            <div>
+                <p *ngIf="flag; else else_block">
+                    EKALAVYA platform supports facility to conduct online test series. Indian education system favors practice mock papers to prepare for the competitive exams.Success for each competitive exam depends on preparation for each topic and practicing mock exams.
+                    If you are running coaching institute and want to digitize your examination process then EKALAVYA is right platform for you. Each assessment can provide detailed analysis of the individual in terms of strong area, weak area, percentile
+                    score, ranking in the batch. Based on the analytics , students can decide about their focus area for the preparation of actual exam.
+                </p>
 
-        </div>
-        <div class="login">
-            <a routerLink="/login">User Login</a>
-        </div><br><br>
-        <div class="admin">
-            <a routerLink="/admin">Admin Login</a>
+            </div>
+            <div class="login">
+                <a routerLink="/login">User Login</a>
+            </div><br><br>
+            <div class="admin">
+                <a routerLink="/admin">Admin Login</a>
+            </div>
         </div>
     </div>
-</div>
+</body>
 <router-outlet></router-outlet>

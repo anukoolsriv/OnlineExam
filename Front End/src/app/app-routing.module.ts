@@ -11,6 +11,7 @@ import { UserExamQuestionsComponent } from './user-exam-questions/user-exam-ques
 import { QuizComponent } from './quiz/quiz.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminAddExamComponent } from './admin-add-exam/admin-add-exam.component';
+import { UserViewReportComponent } from './user-view-report/user-view-report.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'userExamQuestions', component:UserExamQuestionsComponent},
   {path:'Quiz',component:QuizComponent},
   {path:'AdminHome',component:AdminHomeComponent},
-  {path:'AdminAddExam',component:AdminAddExamComponent}
+  {path:'AdminAddExam',component:AdminAddExamComponent},
+  {path:'UserViewReport', component:UserViewReportComponent}
 
 ];
 
@@ -43,5 +45,6 @@ export const routingComponents = [HomePageComponent,
                                   UserExamQuestionsComponent,
                                   QuizComponent,
                                   AdminHomeComponent,
-                                  AdminAddExamComponent                    
+                                  AdminAddExamComponent,
+                                  UserViewReportComponent                  
                                   ]

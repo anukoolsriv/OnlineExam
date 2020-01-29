@@ -29,7 +29,7 @@
     float: left;
     text-decoration: none;
     padding: 5x 20px;
-    border: 10px solid;
+    border: 5px solid;
 }
 
 .admin {
@@ -41,7 +41,7 @@
     float: left;
     text-decoration: none;
     padding: 5x 20px;
-    border: 10px solid;
+    border: 5px solid;
 }
 
 .home {
@@ -58,7 +58,9 @@
 }
 
 .body {
-    background-image: url("/assets/images/WebDev.jpg");
+    background-image: url("/assets/images/9.jpg");
+    -webkit-background-size: cover;
+    background-position: center;
 }
 
 p {

@@ -51,7 +51,7 @@ export class UserRegisterComponent implements OnInit {
 
     this.registrationService.register(this.registerForm.value)
     .subscribe(data => {
-      alert('success')
+      alert('Registration Successful')
        this.router.navigate(['/login'])
    },
    error=>{

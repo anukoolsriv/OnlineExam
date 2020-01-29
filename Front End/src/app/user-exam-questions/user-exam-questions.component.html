@@ -1,7 +1,9 @@
-<p>user-exam-questions works!</p>
-
-{{questions | json}}
-<hr/>
+<div id="WelcomeMessage">
+    <span>{{name}}</span>
+    <button class="logOutButton" name="logout" (click)="onLogOut()">Logout</button>
+</div>
+<!-- <br/> {{questions | json}} -->
+<hr/> Seconds Left : {{timeLeft}}
 <form>
     <div *ngIf="questions">
         <div *ngFor="let question of questions.responseObject">
@@ -16,7 +18,7 @@
                 <br/>
                 <input type="radio" [(ngModel)]="radioSelected" name="{{question.question}}_{{question.questionId}}" value="{{question.option4}}">{{question.option4}}
                 <br/>
-                <input type="button" [disabled]="" value="Record Answer" (click)="recordAnswer(question.questionId)">
+                <input type="button" value="Record Answer" (click)="recordAnswer(question.questionId)">
             </div>
         </div>
     </div>

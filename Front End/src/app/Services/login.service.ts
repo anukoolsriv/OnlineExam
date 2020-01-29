@@ -8,7 +8,9 @@ import { UserLogin } from '../Models/user-login';
 })
 export class LoginService {
 
-url: string ='http://192.168.43.15:9090/user/fetch/';
+// url: string ='http://192.168.43.15:9090/user/fetch/';
+url: string ='http://192.168.12.75:9090/user/fetch';
+
   constructor(private http: HttpClient) { }
   //login user
   login(login:UserLogin){

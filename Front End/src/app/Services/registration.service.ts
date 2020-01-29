@@ -11,8 +11,8 @@ import { QuestionModel } from '../Models/QuestionModel';
 })
 export class RegistrationService {
 
-  url: string ='http://192.168.43.15:9090/user'
-  // url: string ='http://192.168.12.75:9090/user';
+  // url: string ='http://192.168.43.15:9090/user'
+  url: string ='http://192.168.12.75:9090/user';
   // public exams = [];
 
 
@@ -40,8 +40,14 @@ export class RegistrationService {
   }
 
   // match answers for the question
-  matchAnswers(questionId: number, radioSelected: any) {
+  matchAnswers(questionId: string, radioSelected: any) {
     let tempUrl = this.url + "/matchAnswers/" + questionId + "/" + radioSelected;
     return this.http.get<any>(tempUrl,{responseType:'json'})
   }
+
+  setUserScore(obj: any) {
+    let tempUrl = this.url + '/setUserScore';
+    return this.http.post<any>(tempUrl,obj,{responseType:'json'})
+  }
+
 }

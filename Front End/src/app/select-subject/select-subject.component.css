@@ -1,4 +1,4 @@
-button {
+examButtons {
     text-decoration: none;
     background-color: lightgreen;
     border-color: black;
@@ -7,6 +7,38 @@ button {
     margin: 10px 10px 10px 10px;
 }
 
-#button {
+.examButtons {
     padding-top: 50px;
+    text-decoration: none;
+    background-color: lightgreen;
+    border-color: black;
+    border-style: solid;
+    padding: 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.exams {
+    display: inline;
+}
+
+.logOutButton {
+    background-color: red;
+}
+
+#WelcomeMessage {
+    text-align: right;
+    margin-right: 10px;
+    background-color: sandybrown;
+}
+
+.Subject {
+    text-align: center;
+}
+
+#examList {
+    margin: 100px 100px 100px 100px;
+}
+
+body {
+    background: linear-gradient(to right, #a26bcc, #43bcb4);
 }

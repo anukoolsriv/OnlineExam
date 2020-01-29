@@ -1,12 +1,9 @@
-button {
-    text-decoration: none;
-    background-color: lightgreen;
-    border-color: black;
-    border-style: solid;
-    padding: 15px;
-    margin: 10px 10px 10px 10px;
+.logOutButton {
+    background-color: red;
 }
 
-#button {
-    padding-top: 50px;
+#WelcomeMessage {
+    text-align: right;
+    margin-right: 10px;
+    /* background-color: lightcoral; */
 }

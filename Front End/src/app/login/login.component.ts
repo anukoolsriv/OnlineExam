@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../Services/registration.service';
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
             private router: Router){}
   ngOnInit() {
     this.loginForm=this.formBuilder.group( {
-      email:['anukoolsriv@gmail.com'],
+      email:['', Validators.required],
       password:[''],
  });
 

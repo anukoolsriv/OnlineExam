@@ -1,40 +1,51 @@
-* {
-    font-family: 'Segoe UI', Tempus Sans ITC, Trebuchet MS;
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+body {
+    background: linear-gradient(to right, #a26bcc, #43bcb4);
 }
 
-h1 {
-    font-size: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 400px;
-    height: 30px;
+header {
+    text-align: center;
+    font-family: fantasy;
+    font-weight: 600;
+    font-size: xx-large;
+    font-style: normal;
 }
 
-input[type="submit"] {
-    background-color: seagreen;
+.logo img {
+    float: left;
+    width: 300px;
+    height: auto;
 }
 
-input[type="reset"] {
-    background-color: red;
-}
-
-input[type="submit"],
-input[type="reset"] {
+.reg-left {
+    text-align: center;
     color: white;
-    font-family: 'Segoe UI';
-    font-weight: bold;
-    border-radius: 15px;
-    padding: 10px;
+    padding: 15%;
 }
 
-.tbl {
-    margin: 20px 300px 500px 200px;
-    padding: 20px;
-    border: 5px solid grey;
-    border-radius: 100px 10px;
+.reg-right {
+    border: none;
+    background: white;
+    border-top-left-radius: 5% 50%;
+    border-bottom-left-radius: 5% 50%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    height: 20%;
+    margin-left: 100px;
 }
 
-#reg {
-    margin-left: 200px;
-    margin-right: 200px;
+.reg-right .btn-primary {
+    border-radius: 25px;
+    border: none;
+    width: 120px;
+    background: #7690c1;
+    color: black;
+    margin-top: 2%;
+    padding: 2%;
+    float: right;
+}
+
+.star {
+    color: red;
 }

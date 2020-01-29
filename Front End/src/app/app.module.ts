@@ -12,6 +12,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminRemoveExamComponent } from './admin-remove-exam/admin-remove-exam.component';
 import { AdminViewReportComponent } from './admin-view-report/admin-view-report.component';
 import { AdminServiceService } from './Services/admin-service.service';
+import { UserViewReportComponent } from './user-view-report/user-view-report.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AdminServiceService } from './Services/admin-service.service';
     AdminAddExamComponent,
     AdminHomeComponent,
     AdminRemoveExamComponent,
-    AdminViewReportComponent
+    AdminViewReportComponent,
+    UserViewReportComponent
   ],
   imports: [
     BrowserModule,

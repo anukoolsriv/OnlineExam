@@ -1,18 +1,31 @@
-<div class="header">
-    <h3>Welcome to EKALAVYA....!!!</h3>
-    <div id=new>
+<body>
+    <div id="WelcomeMessage">
+        <span>{{name}}</span>
+        <button class="logOutButton" name="logout" (click)="onLogOut()">Logout</button>
+    </div>
+    <div class="banner-area">
+        <header>
+            <div id="left" class="logo">
+                <img src="/assets/images/2.png">
+            </div>
+            <div id="right" class="logo">
+                <ul class="menu">
+                    <li><a routerLink="/selectExam" id="selectsuj">Subject</a></li>
+                    <li><a routerLink="/UserViewReport" id="viewreport">Report</a></li>
+                </ul>
+            </div>
+
+        </header>
+    </div>
+    <!-- <div id="functions">
+        <span>{{name}}</span><button *ngIf="login" class="logout" name="Logout" (click)="onLogOut()">Logout</button>
+    </div> -->
+    <div class="banner-text">
+        <h2>Welcome to Ekalavya</h2>
+        <h3>Will power can overcome the shortcomings.</h3>
+        <p>The means of education are expanding far and wide. Education is not limited to the four walls of a classroom and a blackboard, it has expanded to your fingertips as a result of advancing technology. Many educational institutes now are using technology
+            to make processes like Admissions, Examinations, Fee Payment, etc. available online so that they are streamlined and can be tracked easily. Using an Online Examination System has many benefits.</p>
 
     </div>
-</div>
 
-<div>
-    <button name="Logout" (click)="logOut()">Logout</button>
-</div>
-
-<div id="nav">
-
-    <app-user-options></app-user-options>
-</div>
-
-<div id="footer">
-</div>
+</body>
