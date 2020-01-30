@@ -4,7 +4,7 @@
     </header>
     <a routerLink="/">Home</a>
     <div class="formGroup">
-        <form [formGroup]="loginForm" novalidate (ngSubmit)="loginUser()">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <!-- <br> {{loginForm.value | json}} -->
             <div class="login-box">
 

@@ -50,8 +50,8 @@ export class SelectSubjectComponent implements OnInit {
 
   }
   onLogOut(){
-    alert("Thank You For Your Time, Logging You Out...")
     localStorage.removeItem("username");
+    alert("Thank You For Your Time, Logging You Out...")
     this.router.navigate(['/login'])
   }
 }
