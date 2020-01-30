@@ -57,7 +57,7 @@ public class Functions {
 //		String recepient = "anukoolsriv@gmail.com";
 
 		// Assuming you are sending email from localhost
-//		String host = "localhost";
+		String host = "localhost";
 
 		Properties properties = new Properties();
 
@@ -87,6 +87,7 @@ public class Functions {
 			System.out.println("Sent message successfully....");
 			mailSent = true;
 		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mailSent;
@@ -98,8 +99,8 @@ public class Functions {
 		// Set From: header field of the header.
 			message.setFrom(new InternetAddress(email));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-			message.setSubject("Registration Completed!");
-			message.setText("Welcome To Eklavya! <br>Your Default Password is" + OTP);			
+			message.setSubject("This is the Subject Line!");
+			message.setText("Welcome! Your Default Password is" + OTP);			
 			return message;
 		}
 		catch(MessagingException e){
